@@ -10,6 +10,7 @@ public class NetworkResult<T> {
     }
 
     public int getCode() {
+
         return this.code;
     }
 

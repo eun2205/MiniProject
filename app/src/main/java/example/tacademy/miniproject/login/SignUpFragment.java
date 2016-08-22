@@ -58,7 +58,6 @@ public class SignUpFragment extends Fragment {
                 User user = result.getResult();
                 PropertyManager.getInstance().setEmail(email);
                 PropertyManager.getInstance().setPassword(password);
-                PropertyManager.getInstance().setRegistrationId("1234");
                 Toast.makeText(getContext(), "user id:" + user.getId(), Toast.LENGTH_SHORT).show();
                 ((SimpleLoginActivity) getActivity()).moveMainActivity();
             }

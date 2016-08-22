@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "80021868864",
+    "project_id": "lucky-almanac-140706"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80021868864:android:84fccf4f1b7168ce",
+        "android_client_info": {
+          "package_name": "example.tacademy.miniproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHiv0W5mzaNLZByzm6PRxmqEg41M38aIA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

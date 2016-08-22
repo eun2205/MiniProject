@@ -3,6 +3,9 @@ package example.tacademy.miniproject;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
 /**
  * Created by Tacademy on 2016-08-09.
  */
@@ -12,10 +15,12 @@ public class MyApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        context=this;
+        context = this;
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
     }
 
-    public static android.content.Context getContext() {
+    public static Context getContext() {
         return context;
     }
 }

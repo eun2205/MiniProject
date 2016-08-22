@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.facebook.login.LoginManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import example.tacademy.miniproject.data.NetworkResult;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabHost.addTab(tabHost.newTabSpec("main").setIndicator("Main"), OneFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("chat").setIndicator("Chat"), ChatFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("content").setIndicator("Content"), ContentFragment.class, null);
     }
 
 
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onSuccess(NetworkRequest<NetworkResult<String>> request, NetworkResult<String> result) {
                     PropertyManager.getInstance().setEmail("");
                     PropertyManager.getInstance().setPassword("");
+                    PropertyManager.getInstance().setFacebookId("");
+                    LoginManager.getInstance().logOut();
                     Intent intent = new Intent(MainActivity.this, SimpleLoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

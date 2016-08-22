@@ -14,36 +14,32 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * Created by Tacademy on 2016-08-09.
+ * Created by Tacademy on 2016-08-22.
  */
-public class LoginRequest extends AbstractRequest<NetworkResult<User>> {
-    Request request;
+public class FacebookSignupRequest extends AbstractRequest<NetworkResult<User>> {
 
-    public LoginRequest(Context context, String email, String password, String regId) {
+    Request mRequest;
+    public FacebookSignupRequest(Context context, String username, String email) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment("signin")
+                .addPathSegment("facebooksignup")
                 .build();
-
         RequestBody body = new FormBody.Builder()
+                .add("username", username)
                 .add("email", email)
-                .add("password", password)
-                .add("registrationId", regId)
                 .build();
-
-        request = new Request.Builder()
+        mRequest = new Request.Builder()
                 .url(url)
                 .post(body)
+                .tag(context)
                 .build();
     }
-
-    @Override
-    public Request getRequest() {
-        return request;
-    }
-
     @Override
     protected Type getType() {
         return new TypeToken<NetworkResult<User>>(){}.getType();
     }
-}
 
+    @Override
+    public Request getRequest() {
+        return mRequest;
+    }
+}

@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.io.Serializable;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
@@ -64,7 +62,7 @@ public class ChatFragment extends Fragment {
         user.setEmail(cursor.getString(cursor.getColumnIndex(ChatContract.ChatUser.COLUMN_EMAIL)));
         user.setUserName(cursor.getString(cursor.getColumnIndex(ChatContract.ChatUser.COLUMN_NAME)));
         Intent intent = new Intent(getContext(),ChatActivity.class);
-        intent.putExtra(ChatActivity.EXTRA_USER, (Serializable) user);
+        intent.putExtra(ChatActivity.EXTRA_USER, user);
         startActivity(intent);
     }
 
