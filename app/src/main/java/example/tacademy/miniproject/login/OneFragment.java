@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -76,7 +75,7 @@ public class OneFragment extends Fragment {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getContext(), ChatActivity.class);
         User user = (User)listView.getItemAtPosition(position);
-        intent.putExtra(ChatActivity.EXTRA_USER, (Serializable) user);
+        intent.putExtra(ChatActivity.EXTRA_USER, user);
         startActivity(intent);
     }
 }

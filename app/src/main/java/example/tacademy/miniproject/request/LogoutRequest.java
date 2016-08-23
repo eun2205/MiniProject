@@ -17,13 +17,8 @@ public class LogoutRequest extends AbstractRequest<NetworkResult<String>> {
     Request request;
 
     public LogoutRequest(Context context) {
-        HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment("logout")
-                .build();
-        request = new Request.Builder()
-                .url(url)
-                .tag(context)
-                .build();
+        HttpUrl url = getBaseUrlBuilder().addPathSegment("logout").build();
+        request = new Request.Builder().url(url).tag(context).build();
     }
 
 

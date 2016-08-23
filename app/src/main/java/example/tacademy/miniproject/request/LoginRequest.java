@@ -20,15 +20,9 @@ public class LoginRequest extends AbstractRequest<NetworkResult<User>> {
     Request request;
 
     public LoginRequest(Context context, String email, String password, String regId) {
-        HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment("signin")
-                .build();
+        HttpUrl url = getBaseUrlBuilder().addPathSegment("signin").build();
 
-        RequestBody body = new FormBody.Builder()
-                .add("email", email)
-                .add("password", password)
-                .add("registrationId", regId)
-                .build();
+        RequestBody body = new FormBody.Builder().add("email", email).add("password", password).add("registrationId", regId).build();
 
         request = new Request.Builder()
                 .url(url)

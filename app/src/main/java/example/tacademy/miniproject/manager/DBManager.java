@@ -59,9 +59,9 @@ public class DBManager extends SQLiteOpenHelper {
     public long getUserId(long serverId) {
         String selection = ChatContract.ChatUser.COLUMN_SERVER_ID + " = ?";
         String[] args = {"" + serverId};
-        String[] column = {ChatContract.ChatUser._ID};
+        String[] columns = {ChatContract.ChatUser._ID};
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.query(ChatContract.ChatUser.TABLE, column, selection, args, null, null, null);
+        Cursor c = db.query(ChatContract.ChatUser.TABLE, columns, selection, args, null, null, null);
         try {
             if (c.moveToNext()) {
                 long id = c.getLong(c.getColumnIndex(ChatContract.ChatUser._ID));

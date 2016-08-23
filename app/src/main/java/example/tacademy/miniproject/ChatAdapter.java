@@ -13,6 +13,7 @@ import example.tacademy.miniproject.data.ChatContract;
  */
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Cursor cursor;
+
     public void changeCursor(Cursor c) {
         if (cursor != null) {
             cursor.close();
@@ -29,9 +30,9 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         cursor.moveToPosition(position);
         int type = cursor.getInt(cursor.getColumnIndex(ChatContract.ChatMessage.COLUMN_TYPE));
         switch (type) {
-            case ChatContract.ChatMessage.TYPE_SEND :
+            case ChatContract.ChatMessage.TYPE_SEND:
                 return VIEW_TYPE_SEND;
-            case ChatContract.ChatMessage.TYPE_RECEIVE :
+            case ChatContract.ChatMessage.TYPE_RECEIVE:
                 return VIEW_TYPE_RECEIVE;
         }
         throw new IllegalArgumentException("invalid type");
@@ -40,11 +41,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
-            case VIEW_TYPE_SEND : {
+            case VIEW_TYPE_SEND: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_send, parent, false);
                 return new SendViewHolder(view);
             }
-            case VIEW_TYPE_RECEIVE : {
+            case VIEW_TYPE_RECEIVE: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_receive, parent, false);
                 return new ReceiveViewHolder(view);
             }
@@ -55,16 +56,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         cursor.moveToPosition(position);
-//        int type = cursor.getInt(cursor.getColumnIndex(ChatContract.ChatMessage.COLUMN_TYPE));
         switch (holder.getItemViewType()) {
-            case VIEW_TYPE_SEND : {
-                SendViewHolder svh = (SendViewHolder)holder;
+            case VIEW_TYPE_SEND: {
+                SendViewHolder svh = (SendViewHolder) holder;
                 String message = cursor.getString(cursor.getColumnIndex(ChatContract.ChatMessage.COLUMN_MESSAGE));
                 svh.setMessage(message);
                 break;
             }
-            case VIEW_TYPE_RECEIVE :{
-                ReceiveViewHolder rvh = (ReceiveViewHolder)holder;
+            case VIEW_TYPE_RECEIVE: {
+                ReceiveViewHolder rvh = (ReceiveViewHolder) holder;
                 String message = cursor.getString(cursor.getColumnIndex(ChatContract.ChatMessage.COLUMN_MESSAGE));
                 rvh.setMessage(message);
                 break;
